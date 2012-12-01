@@ -4,6 +4,7 @@
 #include <string>
 #include <sstream>
 #include "main_char.hpp"
+#include "debugfs.hpp"
 using namespace std;
 using namespace sf;
 
@@ -33,29 +34,11 @@ int main()
 		}
 		Clock Clock;
 		App.SetView(View1);
-			string xp;
-		stringstream oxp;
-		float xpos = View1.GetCenter().x;
-		oxp << xpos;
-		xp = oxp.str();
-		
-		string yp;
-		stringstream oyp;
-		float ypos = View1.GetCenter().y;
-		oyp << ypos;
-		yp = oyp.str();
-		
-		string fstring = "View Center: ";
-		fstring += xp;
-		fstring += ", "; 
-		fstring += yp;
-		
-		Text.SetText(fstring);
-		Text.SetX(xpos - View1.GetHalfSize().x);
-		Text.SetY(ypos - View1.GetHalfSize().y);
+		debugfs::ViewCheck(&View1, &Text);
 		App.Clear();
 		
 		character.update(&App, &Clock, &View1);
+		
 		character.draw(&App);
 		App.Draw(Text);
 		
