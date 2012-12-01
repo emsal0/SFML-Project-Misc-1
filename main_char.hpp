@@ -35,6 +35,16 @@ namespace game
 			Sprite.SetX(xx);
 			Sprite.SetY(yy);
 			
+		}
+		
+		
+		void main_c::update (sf::RenderWindow * App, sf::Clock * Clock, sf::View * View)
+		{
+			float ElapsedTime = Clock->GetElapsedTime();
+			Clock->Reset();
+			
+			this->KeyInput(App, ElapsedTime, View);
+			
 			float hsx = View->GetHalfSize().x;
 			float hsy = View->GetHalfSize().y;
 			
@@ -50,21 +60,7 @@ namespace game
 			if ( (xp + Sprite.GetSize().x ) > cent.x + hsx - Bound) View->Move( Offset, 0 );
 			if (yp < cent.y - hsy + Bound) View->Move( 0, -Offset );
 			if ( (yp + Sprite.GetSize().y ) > cent.y + hsy - Bound) View->Move( 0, Offset );
-		}
-		
-		
-		void main_c::update (sf::RenderWindow * App, sf::Clock * Clock, sf::View * View)
-		{
-			
-			
-			float ElapsedTime = Clock->GetElapsedTime();
-			Clock->Reset();
-			
-			this->KeyInput(App, ElapsedTime, View);
-			
-			
-			
-				
+
 		}
 			
 		void main_c::draw(sf::RenderWindow * App)
