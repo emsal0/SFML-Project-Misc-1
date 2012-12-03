@@ -18,7 +18,7 @@ namespace game
 		class object
 		{
 			public:
-				object(float, float, sf::Image *, float);
+				object(float, float,float,  sf::Image * );
 				//~object();
 				float Speed;
 				sf::Sprite Sprite;
@@ -29,9 +29,9 @@ namespace game
 		
 		vector<object *> lobjects;
 		
-		object::object (float x, float y, sf::Image * Image=NULL, float s = 50.f) 
+		object::object (float x, float y, float s = 50.f, sf::Image * Image=NULL) 
 		{
-			Speed = s;
+			Speed = s; 
 			Sprite.SetX(x);
 			Sprite.SetY(y);
 			if (!(Image==NULL))
@@ -40,5 +40,7 @@ namespace game
 			}
 			lobjects.push_back(this);
 		}
+		
+		
 	}
 }
