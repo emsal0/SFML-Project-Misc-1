@@ -15,7 +15,7 @@ namespace game
 		class border: public object
 		{
 			public:
-				void update(sf::RenderWindow *, sf::Clock *, sf::View *, game::objects::main_c *, float);
+				void update(sf::RenderWindow *, sf::View *, game::objects::main_c *, float);
 				void set_dims (float, float);
 				void mc_interact (sf::View *, game::objects::main_c *, float);
 				void draw(sf::RenderWindow *);
@@ -54,22 +54,14 @@ namespace game
 			
 			if (CheckCollision(cx, cy, cw, ch, cx2, cy2, cw2, ch2))
 			{
-				if (Sprite.GetSize().x > Sprite.GetSize().y)
-				{
-					main_char->Sprite.SetX(vx + cx + main_char->Sprite.GetPosition().x );
-					main_char->Sprite.SetY(vy + cy + ch - main_char->Sprite.GetPosition().y );
-				}
-				else 
-				{
-					main_char->Sprite.SetX(vx + cx + cw - main_char->Sprite.GetPosition().x );
-					main_char->Sprite.SetY(View->GetCenter().y - View->GetHalfSize().y + cy + main_char->Sprite.GetPosition().y );
-				}
+				main_char->Sprite.SetX(View->GetCenter().x - View->GetHalfSize().x + cx2 - vx);
+				main_char->Sprite.SetY(View->GetCenter().y - View->GetHalfSize().y + cy2 - vy);
 			}
 				
 			
 		}			
 		
-		void border::update(sf::RenderWindow * App, sf::Clock * Clock, sf::View * View, game::objects::main_c * main_char, float vs)
+		void border::update(sf::RenderWindow * App, sf::View * View, game::objects::main_c * main_char, float vs)
 		{
 			
 			

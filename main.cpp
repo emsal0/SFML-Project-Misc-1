@@ -50,7 +50,6 @@ int main()
 			if (Event.Type == Event::Closed) 
 				App.Close();
 		}
-		Clock Clock;
 		App.SetView(View1);
 		debugfs::ViewCheck(&View1, &character, &Text);
 		App.Clear();
@@ -59,11 +58,11 @@ int main()
 		
 		game::Move_View_y(&View1, &App, 20.f);
 
-		character.update(&App, &Clock, &View1, 20.f);
+		character.update(&App, &View1, 20.f);
 		for (signed i = 0; i<sz; i++) 
 		{
 			
-			borders[i].update(&App, &Clock, &View1, &character, 20.f);
+			borders[i].update(&App, &View1, &character, 20.f);
 			borders[i].draw(&App);
 		}
 		
@@ -71,6 +70,5 @@ int main()
 		App.Draw(Text);
 		
 		App.Display();
-		Clock.Reset();
 	}
 }

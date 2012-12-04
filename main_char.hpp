@@ -12,7 +12,7 @@ namespace game
 		class main_c: public object
 		{
 			public:
-				void update (sf::RenderWindow *, sf::Clock *, sf::View *, float);
+				void update (sf::RenderWindow *, sf::View *, float);
 				void draw(sf::RenderWindow *);
 				void KeyInput(sf::RenderWindow *, float, sf::View *);
 				main_c(float x, float y, float s, sf::Image * Image) : object (x,y,s, Image) {};
@@ -43,7 +43,7 @@ namespace game
 		}
 		
 		
-		void main_c::update (sf::RenderWindow * App, sf::Clock * Clock, sf::View * View, float vs)
+		void main_c::update (sf::RenderWindow * App, sf::View * View, float vs)
 		{
 			float ElapsedTime = App->GetFrameTime();
 			
