@@ -72,10 +72,9 @@ namespace game
 		void border::update(sf::RenderWindow * App, sf::Clock * Clock, sf::View * View, game::objects::main_c * main_char, float vs)
 		{
 			
-			//Clock->Reset();
 			
-			float ElapsedTime = Clock->GetElapsedTime();
-			
+			float ElapsedTime = App->GetFrameTime();
+
 			float dd = vs * ElapsedTime;
 			
 			float yp = Sprite.GetPosition().y;

@@ -31,9 +31,8 @@ int main()
 	game::objects::border border3 (800, 1000, 20.f, &mc_Image);
 	border3.set_dims(2,600);
 	game::objects::border border4 (0,1600, 20.f, &mc_Image);
-	border1.set_dims(800,2);
+	border4.set_dims(800,2);
 
-	int los = game::objects::lobjects.size();
 	
 	vector<game::objects::border> borders;
 	borders.push_back(border1);
@@ -58,7 +57,7 @@ int main()
 				
 		int sz = borders.size();
 		
-		game::Move_View_y(&View1, &Clock, 20.f);
+		game::Move_View_y(&View1, &App, 20.f);
 
 		character.update(&App, &Clock, &View1, 20.f);
 		for (signed i = 0; i<sz; i++) 

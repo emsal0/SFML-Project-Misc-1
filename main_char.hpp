@@ -45,8 +45,7 @@ namespace game
 		
 		void main_c::update (sf::RenderWindow * App, sf::Clock * Clock, sf::View * View, float vs)
 		{
-			float ElapsedTime = Clock->GetElapsedTime();
-		//	Clock->Reset();
+			float ElapsedTime = App->GetFrameTime();
 			
 			float dd = vs * ElapsedTime;
 				

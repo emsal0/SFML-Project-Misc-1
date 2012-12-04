@@ -11,9 +11,9 @@ namespace game
 			return true;
 	}
 	
-	void Move_View_y(sf::View * View, sf::Clock * Clock, float vs)
+	void Move_View_y(sf::View * View, sf::RenderWindow * App, float vs)
 	{
-		float ElapsedTime = Clock->GetElapsedTime();
+		float ElapsedTime = App->GetFrameTime();
 		
 		View->Move(0, -vs*ElapsedTime);
 	}
