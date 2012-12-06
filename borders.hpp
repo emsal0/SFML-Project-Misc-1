@@ -42,9 +42,6 @@ namespace game
 			float vx = View->GetCenter().x - View->GetHalfSize().x;
 			float vy = View->GetCenter().y - View->GetHalfSize().y;
 		
-			float vhx = View->GetHalfSize().x;
-			float vhy = View->GetHalfSize().y;
-		
 			float cx2 = main_char->Sprite.GetPosition().x;
 			float cy2 = main_char->Sprite.GetPosition().y;
 			float cw2 = main_char->Sprite.GetSize().x;
@@ -54,8 +51,35 @@ namespace game
 			
 			if (CheckCollision(cx, cy, cw, ch, cx2, cy2, cw2, ch2))
 			{
-				main_char->Sprite.SetX(View->GetCenter().x - View->GetHalfSize().x + cx2 - vx);
-				main_char->Sprite.SetY(View->GetCenter().y - View->GetHalfSize().y + cy2 - vy);
+				if (Sprite.GetSize().x > Sprite.GetSize().y)
+				{
+					if (Sprite.GetPosition().y < View->GetCenter().y)
+					{
+						main_char->Sprite.SetY(cy );
+					}
+					else if (Sprite.GetPosition().y > View->GetCenter().y)
+					{
+						main_char->Sprite.SetY( + cy - main_char->Sprite.GetSize().y);
+					}
+					main_char->Sprite.SetX(cx2 );
+
+				}
+				else //if (Sprite.GetSize().y < Sprite.GetSize().x)
+				{
+					if (Sprite.GetPosition().x < View->GetCenter().x)
+					{
+						main_char->Sprite.SetX(cx + cw);
+						
+					}
+					else if (Sprite.GetPosition().x > View->GetCenter().x)
+					{
+						main_char->Sprite.SetX( + cx + cw- main_char->Sprite.GetSize().x);
+					}
+					main_char->Sprite.SetY(View->GetCenter().y - View->GetHalfSize().y + cy2 - vy);	
+				
+				}
+			//	main_char->Sprite.SetX(View->GetCenter().x - View->GetHalfSize().x + cx2 - vx);
+			//	main_char->Sprite.SetY(View->GetCenter().y - View->GetHalfSize().y + cy2 - vy);
 			}
 				
 			
