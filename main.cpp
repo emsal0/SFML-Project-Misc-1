@@ -13,7 +13,7 @@ using namespace sf;
 int main() 
 {
 	RenderWindow App;
-	App.Create(VideoMode(800,600), "SFML Window");
+	App.Create(VideoMode(800,600), "Azventure 2012");
 	
 	Image mc_Image;
 	if (!mc_Image.LoadFromFile("Images/az.jpg")) {return EXIT_FAILURE;}
@@ -25,13 +25,13 @@ int main()
 	game::objects::main_c character (400.f,1300.f,200.f,&mc_Image);
 	
 	game::objects::border border1 (0,1000, 20.f, &mc_Image);
-	border1.set_dims(800,2);
-	game::objects::border border2 (0,1000, 20.f, &mc_Image);
-	border2.set_dims(2,600);
-	game::objects::border border3 (800, 1000, 20.f, &mc_Image);
-	border3.set_dims(2,600);
+	border1.set_dims(800,1);
+	game::objects::border border2 (0 - character.Sprite.GetSize().x + 10,1000, 20.f, &mc_Image);
+	border2.set_dims(1,600);
+	game::objects::border border3 (800 + character.Sprite.GetSize().y - 10, 1000, 20.f, &mc_Image);
+	border3.set_dims(1,600);
 	game::objects::border border4 (0,1600, 20.f, &mc_Image);
-	border4.set_dims(800,2);
+	border4.set_dims(800,1);
 
 	
 	vector<game::objects::border> borders;
@@ -63,7 +63,7 @@ int main()
 		{
 			
 			borders[i].update(&App, &View1, &character, 20.f);
-			borders[i].draw(&App);
+	//		borders[i].draw(&App);
 		}
 		
 		character.draw(&App);
