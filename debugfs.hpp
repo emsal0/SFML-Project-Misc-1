@@ -5,9 +5,9 @@
 
 namespace debugfs 
 {
-	void ViewCheck(sf::View * View, game::objects::main_c * main_char, sf::String * Text) 
+	void ViewCheck(sf::RenderWindow * App, sf::View * View, main_c * main_char, sf::String * Text) 
 	{
-		string xp;
+	/*	string xp;
 		stringstream oxp;
 		float xpos = main_char->Sprite.GetPosition().x;
 		oxp << xpos;
@@ -17,12 +17,18 @@ namespace debugfs
 		stringstream oyp;
 		float ypos = main_char->Sprite.GetPosition().y;
 		oyp << ypos;
-		yp = oyp.str();
+		yp = oyp.str();*/
 		
-		string fstring = "Character Position: ";
-		fstring += xp;
+		ostringstream o;
+		o << 1/App->GetFrameTime(); 
+		string ou;
+		ou = o.str();
+		
+		string fstring = "FPS: ";
+		fstring+=ou;
+		/*fstring += xp;
 		fstring += ", "; 
-		fstring += yp;
+		fstring += yp;*/
 		
 		Text->SetText(fstring);
 		Text->SetX(View->GetCenter().x - View->GetHalfSize().x);

@@ -5,7 +5,7 @@
 #include <sstream>
 #include <typeinfo>
 #include <vector>
-//#include "g_game.hpp"
+
 #include "debugfs.hpp"
 using namespace std;
 using namespace sf;
@@ -22,19 +22,19 @@ int main()
 	Vector2f v1_Center (400,1300);
 	View View1(v1_Center, v1_HalfSize);
 	
-	game::objects::main_c character (400.f,1300.f,200.f,&mc_Image);
+	main_c character (400.f,1300.f,200.f,&mc_Image);
 	
-	game::objects::border border1 (0,1000, 20.f, &mc_Image);
+	border border1 (0,1000, 20.f, &mc_Image);
 	border1.set_dims(800,1);
-	game::objects::border border2 (0 - character.Sprite.GetSize().x + 10,1000, 20.f, &mc_Image);
+	border border2 (0 - character.Sprite.GetSize().x + 10,1000, 20.f, &mc_Image);
 	border2.set_dims(1,600);
-	game::objects::border border3 (800 + character.Sprite.GetSize().y - 10, 1000, 20.f, &mc_Image);
+	border border3 (800 + character.Sprite.GetSize().y - 10, 1000, 20.f, &mc_Image);
 	border3.set_dims(1,600);
-	game::objects::border border4 (0,1600, 20.f, &mc_Image);
+	border border4 (0,1600, 20.f, &mc_Image);
 	border4.set_dims(800,1);
 
 	
-	vector<game::objects::border> borders;
+	vector<border> borders;
 	borders.push_back(border1);
 	borders.push_back(border2);
 	borders.push_back(border3);
@@ -51,12 +51,12 @@ int main()
 				App.Close();
 		}
 		App.SetView(View1);
-		debugfs::ViewCheck(&View1, &character, &Text);
+		debugfs::ViewCheck(&App, &View1, &character, &Text);
 		App.Clear();
 				
 		int sz = borders.size();
 		
-		game::Move_View_y(&View1, &App, 20.f);
+		Move_View_y(&View1, &App, 20.f);
 
 		character.update(&App, &View1, 20.f);
 		for (signed i = 0; i<sz; i++) 
